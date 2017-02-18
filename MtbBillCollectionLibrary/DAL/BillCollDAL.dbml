@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MTBBillCollection" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MTBAPPDEV;Initial Catalog=MTBBillCollection;Integrated Security=True" SettingsObjectName="MtbBillCollectionLibrary.Properties.Settings" SettingsPropertyName="MTBBillCollectionConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BankList" Member="BankLists">
+    <Type Name="BankList">
+      <Column Name="BankId" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="bankName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BranchList" Member="BranchLists">
+    <Type Name="BranchList">
+      <Column Name="Zone_code" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="branch_code" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="branch_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Bank_Address" Type="System.String" DbType="VarChar(90) NOT NULL" CanBeNull="false" />
+      <Column Name="country" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Association Name="BranchList_User" Member="Users" ThisKey="branch_code" OtherKey="BranchCode" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Clients" Member="Clients">
+    <Type Name="Client">
+      <Column Name="ClientId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionAccount" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TransferAccount" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Client_Collection" Member="Collections" ThisKey="ClientId" OtherKey="ClientId" Type="Collection" />
+      <Association Name="Client_CollectionMapping" Member="CollectionMappings" ThisKey="ClientId" OtherKey="ClientId" Type="CollectionMapping" />
+      <Association Name="Client_CollectionTransfer" Member="CollectionTransfers" ThisKey="ClientId" OtherKey="ClientID" Type="CollectionTransfer" />
+      <Association Name="Client_Product" Member="Products" ThisKey="ClientId" OtherKey="ClientId" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Collection" Member="Collections">
+    <Type Name="Collection">
+      <Column Name="CollectionId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClientId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="BranchCode" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionTypeId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="CollFrom" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="InstTypeId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InstDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InstrCleared" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="InstClearedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InstClearingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InstRecvdBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CollAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="InstBankCode" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="CollStatusId" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="uploaded" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ApproveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ApproveBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Collection_CollectionAudit" Member="CollectionAudits" ThisKey="CollectionId" OtherKey="CollectionId" Type="CollectionAudit" />
+      <Association Name="Collection_SpecialEdit" Member="SpecialEdits" ThisKey="CollectionId" OtherKey="CollectionId" Type="SpecialEdit" />
+      <Association Name="User_Collection" Member="User" ThisKey="ApproveBy" OtherKey="UserId" Type="User" IsForeignKey="true" />
+      <Association Name="User_Collection1" Member="User1" ThisKey="InstClearedBy" OtherKey="UserId" Type="User" IsForeignKey="true" />
+      <Association Name="User_Collection2" Member="User2" ThisKey="InstRecvdBy" OtherKey="UserId" Type="User" IsForeignKey="true" />
+      <Association Name="Client_Collection" Member="Client" ThisKey="ClientId" OtherKey="ClientId" Type="Client" IsForeignKey="true" />
+      <Association Name="Product_Collection" Member="Product" ThisKey="ProductId" OtherKey="ProductID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CollectionAudit" Member="CollectionAudits">
+    <Type Name="CollectionAudit">
+      <Column Name="SlNo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CollectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="BranchCode" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionTypeId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="CollFrom" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="InstTypeId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="InstNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InstDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InstrCleared" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="InstClearedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InstClearingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InstRecvdBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CollAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="InstBankCode" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="CollStatusId" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="uploaded" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ApproveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ApproveBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AuditDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Collection_CollectionAudit" Member="Collection" ThisKey="CollectionId" OtherKey="CollectionId" Type="Collection" IsForeignKey="true" />
+      <Association Name="CollectionStatus_CollectionAudit" Member="CollectionStatus" ThisKey="CollStatusId" OtherKey="CollStatusID" Type="CollectionStatus" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CollectionMapping" Member="CollectionMappings">
+    <Type Name="CollectionMapping">
+      <Column Name="ClientId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionTypeId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Client_CollectionMapping" Member="Client" ThisKey="ClientId" OtherKey="ClientId" Type="Client" IsForeignKey="true" />
+      <Association Name="CollectionType_CollectionMapping" Member="CollectionType" ThisKey="CollectionTypeId" OtherKey="CollectionTypeId" Type="CollectionType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CollectionStatus" Member="CollectionStatus">
+    <Type Name="CollectionStatus">
+      <Column Name="CollStatusID" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CollStatus" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CollectionStatus_CollectionAudit" Member="CollectionAudits" ThisKey="CollStatusID" OtherKey="CollStatusId" Type="CollectionAudit" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CollectionTransfer" Member="CollectionTransfers">
+    <Type Name="CollectionTransfer">
+      <Column Name="TransferID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransFromAccnt" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TransToAccnt" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TransAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="TransDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TransferBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ApprovedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Client_CollectionTransfer" Member="Client" ThisKey="ClientID" OtherKey="ClientId" Type="Client" IsForeignKey="true" />
+      <Association Name="User_CollectionTransfer" Member="User" ThisKey="TransferBy" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CollectionType" Member="CollectionTypes">
+    <Type Name="CollectionType">
+      <Column Name="CollectionTypeId" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CollectionType" Member="CollectionType1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CollectionType_CollectionMapping" Member="CollectionMappings" ThisKey="CollectionTypeId" OtherKey="CollectionTypeId" Type="CollectionMapping" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FileUploadLog" Member="FileUploadLogs">
+    <Type Name="FileUploadLog">
+      <Column Name="FileId" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreationTime" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="IsUploaded" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InstrumentType" Member="InstrumentTypes">
+    <Type Name="InstrumentType">
+      <Column Name="InstTypeId" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InstTypeName" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="InstTypeShortName" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="InstrSet" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="InstrumentType_Product" Member="Products" ThisKey="InstrSet" OtherKey="InstrTypeSet" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="ProductID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClientId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InstrTypeSet" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="CurrentBalance" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="Product_Collection" Member="Collections" ThisKey="ProductID" OtherKey="ProductId" Type="Collection" />
+      <Association Name="Client_Product" Member="Client" ThisKey="ClientId" OtherKey="ClientId" Type="Client" IsForeignKey="true" />
+      <Association Name="InstrumentType_Product" Member="InstrumentType" ThisKey="InstrTypeSet" OtherKey="InstrSet" Type="InstrumentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ScreenList" Member="ScreenLists">
+    <Type Name="ScreenList">
+      <Column Name="ScreenId" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ScreenName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IsSuperAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsManager" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsIssuer" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsReviewer" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SpecialEdit" Member="SpecialEdits">
+    <Type Name="SpecialEdit">
+      <Column Name="EditId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CollectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EditedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ApproveBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApproveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Collection_SpecialEdit" Member="Collection" ThisKey="CollectionId" OtherKey="CollectionId" Type="Collection" IsForeignKey="true" />
+      <Association Name="User_SpecialEdit" Member="User" ThisKey="EditedBy" OtherKey="UserId" Type="User" IsForeignKey="true" />
+      <Association Name="User_SpecialEdit1" Member="User1" ThisKey="ApproveBy" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TraceLog" Member="TraceLogs">
+    <Type Name="TraceLog">
+      <Column Name="LogId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoginTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LogoutTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="User_TraceLog" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LoginName" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserDetails" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="BranchCode" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="UserTypeId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="isAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isLoggedIn" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="User_Collection" Member="Collections" ThisKey="UserId" OtherKey="ApproveBy" Type="Collection" />
+      <Association Name="User_Collection1" Member="Collections1" ThisKey="UserId" OtherKey="InstClearedBy" Type="Collection" />
+      <Association Name="User_Collection2" Member="Collections2" ThisKey="UserId" OtherKey="InstRecvdBy" Type="Collection" />
+      <Association Name="User_CollectionTransfer" Member="CollectionTransfers" ThisKey="UserId" OtherKey="TransferBy" Type="CollectionTransfer" />
+      <Association Name="User_SpecialEdit" Member="SpecialEdits" ThisKey="UserId" OtherKey="EditedBy" Type="SpecialEdit" />
+      <Association Name="User_SpecialEdit1" Member="SpecialEdits1" ThisKey="UserId" OtherKey="ApproveBy" Type="SpecialEdit" />
+      <Association Name="User_TraceLog" Member="TraceLogs" ThisKey="UserId" OtherKey="UserId" Type="TraceLog" />
+      <Association Name="BranchList_User" Member="BranchList" ThisKey="BranchCode" OtherKey="branch_code" Type="BranchList" IsForeignKey="true" />
+      <Association Name="UserType_User" Member="UserType" ThisKey="UserTypeId" OtherKey="UserTypeId" Type="UserType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserType" Member="UserTypes">
+    <Type Name="UserType">
+      <Column Name="UserTypeId" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TypeName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserTypeInfo" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="UserType_User" Member="Users" ThisKey="UserTypeId" OtherKey="UserTypeId" Type="User" />
+    </Type>
+  </Table>
+</Database>

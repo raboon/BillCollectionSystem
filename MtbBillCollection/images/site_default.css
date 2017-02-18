@@ -1,0 +1,57 @@
+﻿#fullscreenContent
+{
+    background-color:#FFFFFF;
+    /*width:908px; Check this  */
+    height:100%;
+}
+
+#TopBaseArea {
+    background: url("../images/graybg.jpg") repeat-x scroll center top #FFFFFF;
+    color: Blue;
+    font-family: verdana,MS P Gothic,Osaka,Arial,Helvetica,sans-serif;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0;
+   
+    /*set the div in the top-left corner of the screen*/
+    position:absolute;
+    text-align:center;
+    
+    /*set the width and height to 100% of the screen*/
+    width:100%;
+    height:100%;
+}
+
+body   
+{
+    margin:0;
+    font-size: .80em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    padding: 0px;
+    color: #FFFFFF;
+    height:100%;
+    text-align:center;
+}
+
+
+A:link {text-decoration:none; color:White }
+A:visited {text-decoration: none; color:White}
+A:active { text-decoration: none; color:Maroon}
+A:hover {background: #FFFFFF; color: red;}
+
+/*
+A:link {text-decoration: none;background:GRAY;color:WHITE}
+A:visited { text-decoration: none; color:GREEN;width:100%}
+A:active {text-decoration: none; color:WHITE;width:100%}
+A:hover {background: WHITE; color:GRAY;width:100%}
+*/
+
+/*fieldset.login label, fieldset.register label, fieldset.changePassword label
+{
+    display: block;
+}*/
+
+fieldset p 
+{
+    margin: 2px 12px 10px 10px;
+}

@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="MTBIService.Pages.MasterPage" %>
+<%@ Register src="MenuControl.ascx" tagname="MenuControl" tagprefix="uc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>MTB Bill Collection</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href='~/images/site_default.css' type="text/css" rel="stylesheet" />
+    <link href="~/images/style.topPage.css" type="text/css" rel="stylesheet" />
+
+    <style type="text/css">
+        body{ height:100% }
+    </style>
+
+</head>
+<body>
+    <div id="TopBaseArea">
+        <div id="fullscreenContent">
+             <div>
+                <img src="../images/pageHeader.jpg" alt="mtbweb.com"/>
+             </div>
+             <div>
+                <table border="0px" style="text-align:center;" align="center" width="650px">
+                    <tr style="border-width:0; width:100%" >
+                        <td style="color:Green">
+                            <h1>BILL COLLECTION SYSTEM</h1>
+                        </td>
+                     </tr>
+                </table>
+                <table border="0px" style="text-align:center;" align="center">
+                    <tr>
+                        <td>
+                            <form id="form1" runat="server">          
+                                <uc1:MenuControl ID="MenuControl1" runat="server" />
+                                <div style="margin-top:50px"><asp:ContentPlaceHolder ID="mainContent" runat="server"/></div>
+                            </form>
+                        </td>
+                   </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

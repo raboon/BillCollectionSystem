@@ -1,0 +1,11 @@
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\MtbBillCollectionLibrary\bin\Debug\MTBIServiceLibrary.dll
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\MtbBillCollectionLibrary\bin\Debug\MTBIServiceLibrary.pdb
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\MtbBillCollectionLibrary\obj\Debug\ResolveAssemblyReference.cache
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\MtbBillCollectionLibrary\obj\Debug\MTBIServiceLibrary.dll
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\MtbBillCollectionLibrary\obj\Debug\MTBIServiceLibrary.pdb
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\MtbBillCollectionLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\MtbBillCollectionLibrary\bin\Debug\MTBIServiceLibrary.dll.config
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\MtbBillCollectionLibrary\bin\Debug\MTBIServiceLibrary.dll
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\MtbBillCollectionLibrary\bin\Debug\MTBIServiceLibrary.pdb
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\MtbBillCollectionLibrary\obj\Debug\MTBIServiceLibrary.dll
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\MtbBillCollectionLibrary\obj\Debug\MTBIServiceLibrary.pdb

@@ -1,0 +1,20 @@
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\TestMTBBillCollUploder\obj\Debug\ResolveAssemblyReference.cache
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\TestMTBBillCollUploder.dll.config
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\TestMTBBillCollUploder.dll
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\TestMTBBillCollUploder.pdb
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\BillCollectionUploadManager.dll
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\MTBIServiceLibrary.dll
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\BillCollectionUploadManager.pdb
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\MTBIServiceLibrary.pdb
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\TestMTBBillCollUploder\obj\Debug\TestMTBBillCollUploder.dll
+D:\Solutions\MTBBillCollection\Branch\MTBBillCollection\TestMTBBillCollUploder\obj\Debug\TestMTBBillCollUploder.pdb
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\TestMTBBillCollUploder.dll.config
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\TestMTBBillCollUploder.dll
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\TestMTBBillCollUploder.pdb
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\BillCollectionUploadManager.dll
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\MTBIServiceLibrary.dll
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\BillCollectionUploadManager.pdb
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\TestMTBBillCollUploder\bin\Debug\MTBIServiceLibrary.pdb
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\TestMTBBillCollUploder\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\TestMTBBillCollUploder\obj\Debug\TestMTBBillCollUploder.dll
+C:\Documents and Settings\Mohiuddin.kawsar\Desktop\MTBBillCollection\TestMTBBillCollUploder\obj\Debug\TestMTBBillCollUploder.pdb
